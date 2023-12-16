@@ -2,16 +2,19 @@ from django.db import models
 from django.conf import settings
 from django.utils import timezone
 from django.urls import reverse
-from .managers import PostPublishedManager
+from .managers import PostPublishedManager, PostManager
 
 
 class Post(models.Model):
-    published = PostPublishedManager()
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+
     title = models.CharField(max_length=200)
     text = models.TextField()
     created_date = models.DateTimeField(default=timezone.now)
     published_date = models.DateTimeField(blank=True, null=True)
+
+    objects = PostManager()
+    published = PostPublishedManager()
 
     def is_publish(self):
         return True if self.published_date else False
