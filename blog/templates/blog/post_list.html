@@ -5,6 +5,7 @@
     <div class="post">
         <div class="date">
             <p>Publish date: {{ post.published_date }}</p>
+            <p>Author: {{ post.author }}</p>
         </div>
             <h1><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h2>
             <p>{{ post.text|linebreaksbr }}</p>
