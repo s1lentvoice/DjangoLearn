@@ -6,6 +6,7 @@ from .forms import PostForm, CommentForm
 from .models import Post, Comment
 
 
+
 # Create your views here.
 def post_list(request):
     posts = Post.objects.for_user(user=request.user)
